@@ -10,9 +10,8 @@ const countriesNode = document.getElementById("countries");
 fetch('https://restcountries.com/v3.1/all')
   .then(res=>res.json())
   .then(country => {
-    country.map(el => {
-      countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png);
-    })
+    let sort = country.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1)
+    sort.map(el => countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png))
   });
 
 document.getElementById('showAll').addEventListener('click', function() {
@@ -20,9 +19,8 @@ document.getElementById('showAll').addEventListener('click', function() {
   .then(res=>res.json())
   .then(country => {
     countriesNode.innerHTML = '';
-    country.map(el => {
-      countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png);
-    })
+    let sort = country.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1)
+    sort.map(el => countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png))
   });
 })
 
@@ -34,8 +32,7 @@ document.getElementById('regionFilter').addEventListener('click', function(event
     .then(country => {
       let filtered = country.filter(filt => filt.region == region)
       countriesNode.innerHTML = '';
-      return filtered.map(el => {
-        countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png);
-    })
+      let sort = filtered.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1)
+      return sort.map(el => countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png))
   });
 })
