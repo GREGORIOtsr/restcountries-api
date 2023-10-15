@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Countries of the World</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -13,8 +13,26 @@
     />
   </head>
   <body>
-    <h1 id="title" class="center">Countries of the World 🌎</h1>
-    <div id="countries"></div>
+    <header>
+      <h1 id="title" class="center">Countries of the World 🌎</h1>
+      <button id="showAll">Show All</button>
+      <section id="search">
+        <label for="region">Countries from: </label>
+        <select name="region" id="regionSelect">
+          <option value="Americas">Americas</option>
+          <option value="Europe">Europe</option>
+          <option value="Africa">Africa</option>
+          <option value="Asia">Asia</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Antarctic">Antarctic</option>
+        </select>
+        <button id="regionFilter">Search</button>
+      </section>
+    </header>
+
+    <main>
+      <div id="countries"></div>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>
