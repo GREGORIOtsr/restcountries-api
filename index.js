@@ -27,12 +27,11 @@ document.getElementById('showAll').addEventListener('click', function() {
 document.getElementById('regionFilter').addEventListener('click', function(event) {
   let region = document.getElementById('regionSelect').value;
 
-  fetch('https://restcountries.com/v3.1/all')
+  fetch(`https://restcountries.com/v3.1/region/${region.toLowerCase()}`)
     .then(res=>res.json())
     .then(country => {
-      let filtered = country.filter(filt => filt.region == region)
       countriesNode.innerHTML = '';
-      let sort = filtered.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1)
+      let sort = country.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1)
       return sort.map(el => countriesNode.innerHTML += cardTemplate(el.name.common, el.flags.png))
   });
 })
